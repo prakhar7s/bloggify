@@ -7,10 +7,11 @@ const methodOverride = require("method-override");
 const app = express();
 
 mongoose
-  .connect(
-    `mongodb+srv://new_user:gNnp84eONAYHd475@cluster0.2k3tn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
-  )
+  .connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("DONE");
   });
